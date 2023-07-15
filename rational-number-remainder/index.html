@@ -22,13 +22,13 @@
 
   <meta name="description" content="前置知识：拓展欧几里得  问题引入： 求 \(\frac{a}{b} \bmod p\) 的值。 分数还可以取模？（一脸懵） 先往下看，之后你就知道如何对分数取模了。 我们不妨令 \(x\equiv \frac{a}{b} \pmod p\) 在两边同时乘上 \(b\)，可以得到 \(x\times b \equiv \frac{a}{b} \times b \pmod p\)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="有理数取余">
 <meta property="og:url" content="http://example.com/rational-number-remainder/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="前置知识：拓展欧几里得  问题引入： 求 \(\frac{a}{b} \bmod p\) 的值。 分数还可以取模？（一脸懵） 先往下看，之后你就知道如何对分数取模了。 我们不妨令 \(x\equiv \frac{a}{b} \pmod p\) 在两边同时乘上 \(b\)，可以得到 \(x\times b \equiv \frac{a}{b} \times b \pmod p\)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-15T14:37:44.938Z">
-<meta property="article:modified_time" content="2023-07-15T14:43:53.640Z">
+<meta property="article:modified_time" content="2023-07-15T15:06:54.132Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title> | Hexo</title>
+  <title>有理数取余 | Hexo</title>
   
 
 
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          有理数取余
         </h1>
 
         <div class="post-meta">
@@ -174,7 +174,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-15 22:37:44 / Modified: 22:43:53" itemprop="dateCreated datePublished" datetime="2023-07-15T22:37:44+08:00">2023-07-15</time>
+              <time title="Created: 2023-07-15 22:37:44 / Modified: 23:06:54" itemprop="dateCreated datePublished" datetime="2023-07-15T22:37:44+08:00">2023-07-15</time>
             </span>
 
           
@@ -244,12 +244,12 @@ class="math inline">\(p\)</span> 的倍数时，原方程一定有解。</p>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/exgcd/" rel="prev" title="">
-      <i class="fa fa-chevron-left"></i> 
+    <a href="/exgcd/" rel="prev" title="拓展欧几里得算法">
+      <i class="fa fa-chevron-left"></i> 拓展欧几里得算法
     </a></div>
       <div class="post-nav-item">
-    <a href="/crt/" rel="next" title="">
-       <i class="fa fa-chevron-right"></i>
+    <a href="/crt/" rel="next" title="中国剩余定理">
+      中国剩余定理 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -409,6 +409,59 @@ class="math inline">\(p\)</span> 的倍数时，原方程一定有解。</p>
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
