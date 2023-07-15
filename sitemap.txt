@@ -1,2 +1,6 @@
-http://example.com/2023/07/08/hello-world/
+http://example.com/crt/
+http://example.com/rational-number-remainder/
+http://example.com/exgcd/
+http://example.com/bezouts/
+http://example.com/hello-world/
 http://example.com/
