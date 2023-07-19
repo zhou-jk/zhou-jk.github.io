@@ -17,18 +17,18 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前置知识：拓展欧几里得  问题引入：求解同余方程组 \[ \begin{cases} x \equiv a_1\pmod {m_1} \\ x \equiv a_2\pmod {m_2} \\ x \equiv a_3\pmod {m_3} \\ \cdots \\ x \equiv a_n\pmod {m_n} \\ \end{cases} \] 其中 \(m_1,m_2">
+  <meta name="description" content="中国剩余定理可用于求解同余方程组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="中国剩余定理">
 <meta property="og:url" content="http://example.com/crt/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前置知识：拓展欧几里得  问题引入：求解同余方程组 \[ \begin{cases} x \equiv a_1\pmod {m_1} \\ x \equiv a_2\pmod {m_2} \\ x \equiv a_3\pmod {m_3} \\ \cdots \\ x \equiv a_n\pmod {m_n} \\ \end{cases} \] 其中 \(m_1,m_2">
+<meta property="og:description" content="中国剩余定理可用于求解同余方程组">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-15T14:41:38.173Z">
-<meta property="article:modified_time" content="2023-07-15T15:06:09.025Z">
+<meta property="article:modified_time" content="2023-07-17T14:32:54.738Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -172,12 +172,19 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-07-15 22:41:38 / Modified: 23:06:09" itemprop="dateCreated datePublished" datetime="2023-07-15T22:41:38+08:00">2023-07-15</time>
+              <time title="Created: 2023-07-15 22:41:38" itemprop="dateCreated datePublished" datetime="2023-07-15T22:41:38+08:00">2023-07-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-17 22:32:54" itemprop="dateModified" datetime="2023-07-17T22:32:54+08:00">2023-07-17</time>
+              </span>
 
           
+            <div class="post-description">中国剩余定理可用于求解同余方程组</div>
 
         </div>
       </header>
@@ -200,8 +207,8 @@ x \equiv a_3\pmod {m_3} \\
 x \equiv a_n\pmod {m_n} \\
 \end{cases}
 \]</span></p>
-<p>其中 <span class="math inline">\(m_1,m_2,m_3,\cdots
-,m_n\)</span>为两两互质的整数</p>
+<p>其中 <span class="math inline">\(m_1,m_2,m_3,\cdots ,m_n\)</span>
+为两两互质的整数</p>
 <p>求 <span class="math inline">\(x\)</span> 的最小非负整数解</p>
 <p>令 <span class="math inline">\(\prod\limits_{i=1}^nm_i\)</span>，因为
 <span class="math inline">\(m_1,m_2,m_3,\cdots ,m_n\)</span>
@@ -264,6 +271,55 @@ class="math inline">\(k\)</span>为任意整数矛盾，故原命题不成立。
 曹冲养猪</a></p>
 <p>模板题</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">11</span>;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">ex_gcd</span><span class="params">(<span class="type">long</span> <span class="type">long</span> a,<span class="type">long</span> <span class="type">long</span> b,<span class="type">long</span> <span class="type">long</span> &amp;x,<span class="type">long</span> <span class="type">long</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> d=<span class="built_in">ex_gcd</span>(b,a%b,x,y);</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> tmp=x;</span><br><span class="line">    x=y,y=tmp-a/b*y;</span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">calc</span><span class="params">(<span class="type">long</span> <span class="type">long</span> a,<span class="type">long</span> <span class="type">long</span> b,<span class="type">long</span> <span class="type">long</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> x,y;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> d=<span class="built_in">ex_gcd</span>(a,b,x,y);</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> s=b/d;</span><br><span class="line">    x=x*c/d;</span><br><span class="line">    x=(x%s+s)%s;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> M=<span class="number">1</span>;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> ans;</span><br><span class="line"><span class="type">int</span> m[N],a[N];</span><br><span class="line"><span class="type">int</span> t[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;m[i],&amp;a[i]);</span><br><span class="line">        M*=m[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        t[i]=<span class="built_in">calc</span>(M/m[i],m[i],<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        ans+=a[i]*(M/m[i])*t[i];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,(ans+M)%M);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h4 id="扩展中国剩余定理">扩展中国剩余定理</h4>
+<p>问题引入：求解同余方程组</p>
+<p><span class="math display">\[
+\begin{cases}
+x \equiv a_1\pmod {m_1} \\
+x \equiv a_2\pmod {m_2} \\
+x \equiv a_3\pmod {m_3} \\
+\cdots \\
+x \equiv a_n\pmod {m_n} \\
+\end{cases}
+\]</span></p>
+<p>其中 <span class="math inline">\(m_1,m_2,m_3,\cdots ,m_n\)</span>
+为<strong>不一定</strong>两两互质的整数。</p>
+<hr />
+<p>显然不能用中国剩余定理直接求。</p>
+<p>不妨前 <span class="math inline">\(i-1\)</span> 个 <span
+class="math inline">\(m\)</span> 的最小公倍数 <span
+class="math inline">\(\operatorname{lcm}(m_1,m_2,\cdots
+,m_{i-1})=M\)</span></p>
+<p>考虑当前做到了第 <span class="math inline">\(i\)</span> 个方程，前
+<span class="math inline">\(i-1\)</span> 个方程的答案为 <span
+class="math inline">\(x\)</span>，加入了第 <span
+class="math inline">\(i\)</span> 个方程以后的答案为 <span
+class="math inline">\(t\)</span>。</p>
+<p>因为我们在解决第 <span class="math inline">\(i\)</span>
+个方程的时候也需要令前<span
+class="math inline">\(i-1\)</span>个方程成立，所以<span
+class="math inline">\(t\)</span>一定可以写成 <span
+class="math inline">\(x+kM\)</span> 的形式（因为 <span
+class="math inline">\(kM \equiv 0 \pmod {m_i}\)</span>）。</p>
+<p>考虑加入第 <span class="math inline">\(i\)</span>
+个方程，我们需要满足 <span class="math inline">\(t \equiv a_i \pmod
+{m_i}\)</span>。</p>
+<p>将 <span class="math inline">\(t=x+kM\)</span> 带入原方程，可得 <span
+class="math inline">\(x+kM \equiv a_i \pmod {m_i}\)</span>。</p>
+<p>将 <span class="math inline">\(x\)</span> 移到右边，可以得出 <span
+class="math inline">\(kM \equiv a_i -x \pmod {m_i}\)</span>。</p>
+<p><span class="math inline">\(M,a_i,x,m_i\)</span>
+已知，套个拓展欧几里得即可。</p>
+<p>然后可以从 <span class="math inline">\(1\)</span> 一直推到 <span
+class="math inline">\(i\)</span>，最后的 <span
+class="math inline">\(x\)</span> 即为答案。</p>
+<hr />
+<p>例题：</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4777">P4777
+【模板】扩展中国剩余定理（EXCRT）</a></p>
+<p>模板题，注意中间运算的时候可能会爆 long long</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">100001</span>;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">write</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;</span><br><span class="line">    <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">write</span>(x/<span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">__int128 <span class="title">gcd</span><span class="params">(__int128 a,__int128 b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b==<span class="number">0</span>?a:<span class="built_in">gcd</span>(b,a%b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">__int128 <span class="title">ex_gcd</span><span class="params">(__int128 a,__int128 b,__int128 &amp;x,__int128 &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    __int128 d=<span class="built_in">ex_gcd</span>(b,a%b,x,y);</span><br><span class="line">    __int128 tmp=x;</span><br><span class="line">    x=y,y=tmp-a/b*y;</span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">__int128 <span class="title">calc</span><span class="params">(__int128 a,__int128 b,__int128 c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    __int128 x,y;</span><br><span class="line">    __int128 d=<span class="built_in">ex_gcd</span>(a,b,x,y);</span><br><span class="line">    __int128 s=b/d;</span><br><span class="line">    x=x*c/d;</span><br><span class="line">    x=(x%s+s)%s;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">__int128 M=<span class="number">1</span>,ans;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> m[N],a[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>,&amp;m[i],&amp;a[i]);</span><br><span class="line">    M=m[<span class="number">1</span>],ans=a[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        __int128 c=((a[i]%m[i])-(ans%m[i])+m[i])%m[i];</span><br><span class="line">        __int128 k=<span class="built_in">calc</span>(M,m[i],c);</span><br><span class="line">        ans+=k*M;</span><br><span class="line">        M=M/<span class="built_in">gcd</span>(M,m[i])*m[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">write</span>(ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -282,7 +338,10 @@ class="math inline">\(k\)</span>为任意整数矛盾，故原命题不成立。
     <a href="/rational-number-remainder/" rel="prev" title="有理数取余">
       <i class="fa fa-chevron-left"></i> 有理数取余
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/bsgs/" rel="next" title="大步小步算法">
+      大步小步算法 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -341,6 +400,7 @@ class="math inline">\(k\)</span>为任意整数矛盾，故原命题不成立。
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">扩展中国剩余定理</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -354,7 +414,7 @@ class="math inline">\(k\)</span>为任意整数矛盾，故原命题不成立。
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

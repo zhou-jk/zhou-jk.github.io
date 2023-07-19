@@ -1,6 +1,11 @@
-http://example.com/rational-number-remainder/
 http://example.com/exgcd/
-http://example.com/bezouts/
 http://example.com/crt/
+http://example.com/rational-number-remainder/
+http://example.com/bsgs/
+http://example.com/bezouts/
+http://example.com/gcd/
+http://example.com/long-chain-subdivision/
+http://example.com/primitive-root/
+http://example.com/quad-residue/
 http://example.com/hello-world/
 http://example.com/

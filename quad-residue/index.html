@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="二次剩余">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二次剩余">
+<meta property="og:url" content="http://example.com/quad-residue/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="二次剩余">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-16T10:51:46.507Z">
+<meta property="article:modified_time" content="2023-07-16T10:55:46.655Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/quad-residue/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>二次剩余 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/quad-residue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          二次剩余
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-07-16 18:51:46 / Modified: 18:55:46" itemprop="dateCreated datePublished" datetime="2023-07-16T18:51:46+08:00">2023-07-16</time>
+            </span>
+
+          
+            <div class="post-description">二次剩余</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>问题引入：</p>
+<p>求解关于 <span class="math inline">\(x\)</span> 的方程</p>
+<p><span class="math display">\[x^2\equiv n \pmod p\]</span></p>
+<p>其中 <span class="math inline">\(p\)</span> 为一个奇质数，<span
+class="math inline">\(n,p\)</span> 已知，求 <span
+class="math inline">\(x\)</span></p>
+<hr />
+<h4 id="解的数量">解的数量</h4>
+<p><span class="math inline">\(n\)</span> 是二次剩余当且仅当原方程 <span
+class="math inline">\(x^2 \equiv n \pmod p\)</span>有解。</p>
+<p>上述方程无解的 <span class="math inline">\(n\)</span>
+称作非二次剩余</p>
+<p>那么问题来了：</p>
+<p>对于二次剩余 <span class="math inline">\(n\)</span> ，<span
+class="math inline">\(x^2 \equiv n \pmod p\)</span> 有多少解？</p>
+<p>我们拎出其中的两个解 <span class="math inline">\(x_1,x_2(x_1 \neq
+x_2)\)</span>，分别讨论一下。</p>
+<p>题意有</p>
+<p><span class="math display">\[x_1^2\equiv n \equiv x_2^2 \pmod
+p\]</span></p>
+<p>那么，将 <span class="math inline">\(x_2^2\)</span>
+移到左边来，有</p>
+<p><span class="math display">\[x_1^2-x_2^2 \equiv 0 \pmod
+p\]</span></p>
+<p>用一下平方差公式，有</p>
+<p><span class="math display">\[(x_1-x_2)(x_1+x_2) \equiv 0 \pmod
+p\]</span></p>
+<p>因为这里的 <span class="math inline">\(x_1,x_2\)</span> 都是在模
+<span class="math inline">\(p\)</span> 意义下的解，所以 <span
+class="math inline">\(x_1,x_2\)</span> 必定小于 <span
+class="math inline">\(p\)</span>，故有</p>
+<p><span class="math display">\[(x_1-x_2) \bmod p\neq 0\]</span></p>
+<p>所以，我们有</p>
+<p><span class="math display">\[x_1+x_2 \equiv 0 \pmod p\]</span></p>
+<p>所以说，<span class="math inline">\(x_1\)</span> 在模 <span
+class="math inline">\(p\)</span> 意义下与 <span
+class="math inline">\(x_2\)</span> 互为相反数。</p>
+<p>假设还存在一个解 <span class="math inline">\(x_3\)</span>，那么 <span
+class="math inline">\(x_3\)</span> 与 <span
+class="math inline">\(x_1,x_2\)</span> 都要互为相反数，这与 <span
+class="math inline">\(x_1 \neq x_2\)</span>
+相矛盾，故原方程最多只有两个解。</p>
+<hr />
+<h4 id="欧拉准则">欧拉准则</h4>
+<p>当</p>
+<p><span class="math display">\[n^{\frac{p-1}{2}}\equiv 1 \pmod
+p\]</span></p>
+<p>时 <span class="math inline">\(n\)</span> 为二次剩余。</p>
+<hr />
+<p>证明：</p>
+<p>若 <span class="math inline">\(n\)</span> 是二次剩余，则有</p>
+<p><span class="math display">\[n^{\frac{p-1}{2}} \equiv
+(x^2)^{\frac{p-1}{2}} \equiv x^{p-1} \equiv 1 \pmod p\]</span></p>
+<p>若 <span class="math inline">\(n^{\frac{p-1}{2}} \equiv 1 \pmod
+p\)</span>，将 <span class="math inline">\(n\)</span> 表示为 <span
+class="math inline">\(g^k\)</span>，其中 <span
+class="math inline">\(g=\delta_p(n)\)</span>。</p>
+<p>那么有</p>
+<p><span class="math display">\[g^{k\frac{p-1}{2}} \equiv 1 \pmod
+p\]</span></p>
+<p>由于 <span class="math inline">\(g\)</span> 是原根，必有</p>
+<p><span class="math display">\[p-1|k\frac{p-1}{2}\]</span></p>
+<p>也就是说 <span class="math inline">\(k\)</span> 一定是偶数，那么有
+<span class="math inline">\(x \equiv g^{\frac{k}{2}} \pmod
+p\)</span>满足条件。</p>
+<p>也就是说 <span class="math inline">\(n^{\frac{p-1}{2}} \equiv 1 \pmod
+p\)</span> 与 <span class="math inline">\(n\)</span>
+是二次剩余是等价的。</p>
+<hr />
+<h3 id="详细做法">详细做法</h3>
+<hr />
+<h3 id="一暴力">一、暴力</h3>
+<p>假设<span class="math inline">\(g\)</span>是<span
+class="math inline">\(p\)</span>的原根，那么只需要求解<span
+class="math inline">\(g^a\equiv n \pmod p\)</span>，其中<span
+class="math inline">\(x=g^{\frac{a}{2}}\)</span>。</p>
+<p>这里<span class="math inline">\(a\)</span>一定会是一个偶数。</p>
+<hr />
+<p>证明：</p>
+<p>回到上面的式子，因为<span
+class="math inline">\(n\)</span>是二次剩余，所以</p>
+<p><span class="math display">\[(g^a)^{\frac{p-1}{2}}\equiv
+{(g^{p-1})}^{\frac{a}{2}} \equiv 1 \pmod p\]</span></p>
+<p>根据费马小定理<span class="math inline">\(g^{p-1}\equiv 1 \pmod
+p\)</span>，所以可以知道<span
+class="math inline">\(g^{\frac{a}{2}}\)</span>肯定是有意义的。</p>
+<p>所以一个合法的解就是<span
+class="math inline">\(x=g^{\frac{a}{2}}\)</span>。</p>
+<p>而这个<span class="math inline">\(a\)</span>的求解可以使用<span
+class="math inline">\(\text{BSGS}\)</span>在<span
+class="math inline">\(O(\sqrt{p})\)</span>的复杂度里面求解。</p>
+<hr />
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">ksm</span><span class="params">(<span class="type">long</span> <span class="type">long</span> a,<span class="type">long</span> <span class="type">long</span> b,<span class="type">long</span> <span class="type">long</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) res=res*a%p;</span><br><span class="line">        a=a*a%p,b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">findroot</span><span class="params">(<span class="type">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> p=m<span class="number">-1</span>;</span><br><span class="line">    <span class="type">int</span> tmp=p;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(tmp);i++)</span><br><span class="line">        <span class="keyword">if</span>(tmp%i==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            t.<span class="built_in">push_back</span>(i);</span><br><span class="line">            <span class="keyword">while</span>(tmp%i==<span class="number">0</span>) tmp/=i;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span>(tmp&gt;<span class="number">1</span>) t.<span class="built_in">push_back</span>(tmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> g=<span class="number">2</span>;g&lt;=p;g++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">bool</span> flag=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> u:t)</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">ksm</span>(g,p/u,m)==<span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                flag=<span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag) <span class="keyword">return</span> g;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">unordered_map&lt;<span class="type">long</span> <span class="type">long</span>,<span class="type">long</span> <span class="type">long</span>&gt;book;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">BSGS</span><span class="params">(<span class="type">long</span> <span class="type">long</span> y,<span class="type">long</span> <span class="type">long</span> z,<span class="type">long</span> <span class="type">long</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    y%=p,z%=p;</span><br><span class="line">    <span class="keyword">if</span>(y==<span class="number">0</span>) <span class="keyword">return</span> z==<span class="number">0</span>?<span class="number">1</span>:<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">if</span>(z==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> m=<span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(p));</span><br><span class="line">    book.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> sum=z;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        book[sum]=i;</span><br><span class="line">        sum=sum*y%p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> t=<span class="built_in">ksm</span>(y,m,p);</span><br><span class="line">    sum=t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">ceil</span>((<span class="type">double</span>)p/m);i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(book.<span class="built_in">count</span>(sum)) <span class="keyword">return</span> i*m-book[sum];</span><br><span class="line">        sum=sum*t%p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> n,<span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">ksm</span>(n,(p<span class="number">-1</span>)/<span class="number">2</span>,p)%p!=<span class="number">1</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="type">int</span> g=<span class="built_in">findroot</span>(p);</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> res=<span class="built_in">BSGS</span>(g,n,p);</span><br><span class="line">    <span class="keyword">if</span>(res==<span class="number">-1</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">ksm</span>(g,res/<span class="number">2</span>,p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="二cipolla">二、Cipolla</h3>
+<p>我们先随机一个 <span class="math inline">\(a\)</span>，使得 <span
+class="math inline">\(a^2-n\)</span>
+为非二次剩余，由于非二次剩余的数量接近 <span
+class="math inline">\(\frac{p}{2}\)</span>，所以这个的期望次数大概是
+<span class="math inline">\(2\)</span> 次。</p>
+<p>定义 <span class="math inline">\(\omega =
+\sqrt{a^2-n}\)</span>，类比一下 <span class="math inline">\(i\)</span>
+的定义，这样以后所有的数都可以表示成 <span class="math inline">\(a\omega
++b\)</span> 的形式</p>
+<p>那么 <span class="math inline">\((a + \omega)^{p+1} \equiv n\pmod
+p\)</span>，考虑证明。</p>
+<p>先证明几个引理</p>
+<hr />
+<h4 id="引理1">引理1：</h4>
+<p><span class="math display">\[\omega ^{p-1}\equiv -1 \pmod
+p\]</span></p>
+<hr />
+<p>证明：</p>
+<p>因为 <span class="math inline">\(\omega ^2\)</span>
+为非二次剩余，所以</p>
+<p><span class="math display">\[(\omega^2)^{\frac{p-1}{2}}\equiv
+\omega^{p-1} \neq 1\pmod p\]</span></p>
+<p>根据费马小定理有</p>
+<p><span class="math display">\[(\omega^2)^{p-1}\equiv 1 \pmod
+p\]</span></p>
+<p>所以我们有</p>
+<p><span class="math display">\[\omega ^{p-1}\equiv -1 \pmod
+p\]</span></p>
+<p>得证</p>
+<hr />
+<h4 id="引理2">引理2：</h4>
+<p><span class="math display">\[(A + B)^p \equiv A^p + B^p \pmod
+p\]</span></p>
+<hr />
+<p>证明：</p>
+<p>将 <span class="math inline">\((A+B)^p\)</span> 展开可得</p>
+<p><span
+class="math display">\[(A+B)^p=\sum\limits_{k=0}^p\binom{p}{k}x^{k}y^{p-k}\]</span></p>
+<p>其中因为 <span class="math inline">\(p\)</span> 是质数，所以在 <span
+class="math inline">\(\binom{p}{k}\)</span> 中，只有 <span
+class="math inline">\(k=0,p\)</span> 的时候 <span
+class="math inline">\(\binom{p}{k}\)</span> 才不是 <span
+class="math inline">\(p\)</span> 的倍数。</p>
+<p>所以可以得到</p>
+<p><span class="math display">\[(A+B)^p≡A^p+B^p \pmod p\]</span></p>
+<p>得证。</p>
+<hr />
+<p>现在证明上述结论：</p>
+<p><span class="math display">\[(a + \omega)^{p+1} \equiv (a + \omega)^p
+(a + \omega) \equiv(a^p + \omega^p) (a + \omega)\]</span></p>
+<p><span class="math display">\[\equiv (a^p + \omega^{p-1}\times \omega)
+(a + \omega) \equiv (a - \omega) (a + \omega) \equiv a^2 - \omega^2
+\equiv n \pmod p\]</span></p>
+<p>因为要求的是 <span class="math inline">\(n\)</span> 的二次剩余，而
+<span class="math inline">\(p+1\)</span>
+也恰好是偶数，所以我们得到了答案 <span class="math inline">\(x=
+(a+\omega)^{\frac{p+1}{2}}\)</span>。</p>
+<p>这个求出的解里面很可能带有 <span
+class="math inline">\(\omega\)</span> 项，所以我们就来证明其中不含 <span
+class="math inline">\(\omega\)</span>。</p>
+<p>假设 <span class="math inline">\((a+\omega){\frac{p+1}{2}}\equiv
+xa+y\omega \pmod p\)</span></p>
+<p>所以有</p>
+<p><span class="math display">\[(xa+y\omega)^2\equiv n \pmod
+p\]</span></p>
+<p>拆开之后得到</p>
+<p><span class="math display">\[x^2a^2+y^2(a^2-n)+2xay\omega\equiv n
+\pmod p\]</span></p>
+<p>将 <span class="math inline">\(2xay\omega\)</span> 移到右边，<span
+class="math inline">\(n\)</span> 移到左边，可得</p>
+<p><span class="math display">\[x^2a^2+y^2(a^2-n) - n \equiv -2xay\omega
+\pmod p\]</span></p>
+<p>因为式子左边的不含 <span class="math inline">\(\omega\)</span>
+项，右边含有 <span class="math inline">\(\omega\)</span> 项，故 <span
+class="math inline">\(-2xay\equiv 0 \pmod p\)</span></p>
+<p>所以 <span class="math inline">\(x\equiv 0 \pmod p\)</span> 或者
+<span class="math inline">\(y \equiv 0 \pmod p\)</span>。</p>
+<p>假设 <span class="math inline">\(x\equiv 0,y\neq 0 \pmod
+p\)</span>，那么</p>
+<p><span class="math display">\[y^2(a^2-n)\equiv n \pmod p\]</span></p>
+<p><span class="math display">\[[y^2(a^2-n)]^{\frac{p-1}{2}}\equiv
+y^{p-1} \times (a^2-n)^{\frac{p-1}{2}} \equiv 1 \times
+(a^2-n)^{\frac{p-1}{2}} \equiv  (\omega^2)^{\frac{p-1}{2}} \neq 1 \pmod
+p\]</span></p>
+<p>即 <span class="math inline">\(y^2(a^2-n)\)</span> 为非二次剩余，又
+<span class="math inline">\(y^2(a^2-n)\equiv n \pmod p\)</span>，即
+<span class="math inline">\(n\)</span> 为非二次剩余，这与 <span
+class="math inline">\(n\)</span> 为二次剩余矛盾。</p>
+<p>所以 <span class="math inline">\(y\equiv 0 \pmod p\)</span>。</p>
+<hr />
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> MOD;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> w;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">complex</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> real,imag;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> complex &amp;b)<span class="type">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> real==b.real&amp;&amp;imag==b.imag;</span><br><span class="line">    &#125;</span><br><span class="line">    complex <span class="keyword">operator</span> *(<span class="type">const</span> complex &amp;b)<span class="type">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        complex res;</span><br><span class="line">        res.real=(real*b.real%MOD+w*imag%MOD*b.imag%MOD)%MOD;</span><br><span class="line">        res.imag=(real*b.imag%MOD+imag*b.real%MOD)%MOD;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    complex <span class="keyword">operator</span> *=(<span class="type">const</span> complex &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        *<span class="keyword">this</span>=*<span class="keyword">this</span> * b;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> complex <span class="title">ksm</span><span class="params">(complex a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        complex res=(complex)&#123;<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">while</span>(b)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(b&amp;<span class="number">1</span>) res*=a;</span><br><span class="line">            a*=a,b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">ksm</span><span class="params">(<span class="type">long</span> <span class="type">long</span> a,<span class="type">long</span> <span class="type">long</span> b,<span class="type">long</span> <span class="type">long</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) res=res*a%p;</span><br><span class="line">        a=a*a%p,b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">ksm</span>(n,(MOD<span class="number">-1</span>)/<span class="number">2</span>,MOD)==<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">cipolla</span><span class="params">(<span class="type">int</span> n,<span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    MOD=p;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">check</span>(n)) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a;</span><br><span class="line">    <span class="keyword">for</span>(a=<span class="built_in">rand</span>()%(MOD<span class="number">-1</span>)+<span class="number">1</span>;<span class="built_in">check</span>((a*a%MOD+MOD-n)%MOD);a=<span class="built_in">rand</span>()%(MOD<span class="number">-1</span>)+<span class="number">1</span>);</span><br><span class="line">    w=(a*a%MOD+MOD-n)%MOD;</span><br><span class="line">    complex res=<span class="built_in">ksm</span>((complex)&#123;a,<span class="number">1</span>&#125;,(MOD+<span class="number">1</span>)/<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> res.real;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h4 id="例题">例题</h4>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5491">P5491
+【模板】二次剩余</a></p>
+<p>二次剩余模板题</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> MOD;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> w;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">complex</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> real,imag;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> complex &amp;b)<span class="type">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> real==b.real&amp;&amp;imag==b.imag;</span><br><span class="line">    &#125;</span><br><span class="line">    complex <span class="keyword">operator</span> *(<span class="type">const</span> complex &amp;b)<span class="type">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        complex res;</span><br><span class="line">        res.real=(real*b.real%MOD+w*imag%MOD*b.imag%MOD)%MOD;</span><br><span class="line">        res.imag=(real*b.imag%MOD+imag*b.real%MOD)%MOD;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    complex <span class="keyword">operator</span> *=(<span class="type">const</span> complex &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        *<span class="keyword">this</span>=*<span class="keyword">this</span> * b;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> complex <span class="title">ksm</span><span class="params">(complex a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        complex res=(complex)&#123;<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">while</span>(b)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(b&amp;<span class="number">1</span>) res*=a;</span><br><span class="line">            a*=a,b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">ksm</span><span class="params">(<span class="type">long</span> <span class="type">long</span> a,<span class="type">long</span> <span class="type">long</span> b,<span class="type">long</span> <span class="type">long</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) res=res*a%p;</span><br><span class="line">        a=a*a%p,b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">ksm</span>(n,(MOD<span class="number">-1</span>)/<span class="number">2</span>,MOD)==<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">cipolla</span><span class="params">(<span class="type">int</span> n,<span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    MOD=p;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">check</span>(n)) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a;</span><br><span class="line">    <span class="keyword">for</span>(a=<span class="built_in">rand</span>()%(MOD<span class="number">-1</span>)+<span class="number">1</span>;<span class="built_in">check</span>((a*a%MOD+MOD-n)%MOD);a=<span class="built_in">rand</span>()%(MOD<span class="number">-1</span>)+<span class="number">1</span>);</span><br><span class="line">    w=(a*a%MOD+MOD-n)%MOD;</span><br><span class="line">    complex res=<span class="built_in">ksm</span>((complex)&#123;a,<span class="number">1</span>&#125;,(MOD+<span class="number">1</span>)/<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> res.real;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> T,n,p;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">srand</span>((<span class="type">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;p);</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> res=<span class="built_in">cipolla</span>(n,p);</span><br><span class="line">        <span class="keyword">if</span>(res==<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;Hola!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(res==p-res) <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,res);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(res==<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;0\n&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%lld %lld\n&quot;</span>,<span class="built_in">min</span>(res,p-res),<span class="built_in">max</span>(res,p-res));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/gcd/" rel="prev" title="欧几里得算法">
+      <i class="fa fa-chevron-left"></i> 欧几里得算法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/primitive-root/" rel="next" title="原根">
+      原根 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%9A%84%E6%95%B0%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">解的数量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%86%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text">欧拉准则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E5%81%9A%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">详细做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%9A%B4%E5%8A%9B"><span class="nav-number"></span> <span class="nav-text">一、暴力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8Ccipolla"><span class="nav-number"></span> <span class="nav-text">二、Cipolla</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E7%90%861"><span class="nav-number">1.</span> <span class="nav-text">引理1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E7%90%862"><span class="nav-number">2.</span> <span class="nav-text">引理2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">例题</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
