@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="欧几里得算法用于两个正整数 $a,b$ 的最大公约数">
+  <meta name="description" content="单位根反演是借助单位根和整除之间的关系，主要用于解决“求解某个序列中下标为k的倍数的数之和”这一类问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欧几里得算法">
-<meta property="og:url" content="http://example.com/gcd/index.html">
+<meta property="og:title" content="单位根反演">
+<meta property="og:url" content="http://example.com/omega/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="欧几里得算法用于两个正整数 $a,b$ 的最大公约数">
+<meta property="og:description" content="单位根反演是借助单位根和整除之间的关系，主要用于解决“求解某个序列中下标为k的倍数的数之和”这一类问题">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-16T10:48:40.908Z">
-<meta property="article:modified_time" content="2023-07-16T11:20:30.251Z">
+<meta property="article:published_time" content="2023-08-30T09:55:30.134Z">
+<meta property="article:modified_time" content="2023-08-30T09:56:36.897Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/gcd/">
+<link rel="canonical" href="http://example.com/omega/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>欧几里得算法 | Hexo</title>
+  <title>单位根反演 | Hexo</title>
   
 
 
@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/gcd/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/omega/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          欧几里得算法
+          单位根反演
         </h1>
 
         <div class="post-meta">
@@ -174,11 +174,11 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-16 18:48:40 / Modified: 19:20:30" itemprop="dateCreated datePublished" datetime="2023-07-16T18:48:40+08:00">2023-07-16</time>
+              <time title="Created: 2023-08-30 17:55:30 / Modified: 17:56:36" itemprop="dateCreated datePublished" datetime="2023-08-30T17:55:30+08:00">2023-08-30</time>
             </span>
 
           
-            <div class="post-description">欧几里得算法用于两个正整数 $a,b$ 的最大公约数</div>
+            <div class="post-description">单位根反演是借助单位根和整除之间的关系，主要用于解决“求解某个序列中下标为k的倍数的数之和”这一类问题</div>
 
         </div>
       </header>
@@ -189,63 +189,136 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong>定理：</strong></p>
-<p>设 <span class="math inline">\(a=kb+r\)</span>（<span
-class="math inline">\(a,b,k,r\)</span> 都是正整数），则 <span
-class="math inline">\(\gcd(a,b)=\gcd(b,r)\)</span>，即 <span
-class="math inline">\(\gcd(a,b)=\gcd(b,a\bmod b)\)</span>。</p>
-<p><strong>证明：</strong></p>
-<p>不妨令 <span class="math inline">\(a=kb+r\)</span>（<span
-class="math inline">\(a,b,k,r\)</span> 为自然数，<span
-class="math inline">\(a&gt;b\)</span>）</p>
-<p>则 <span class="math inline">\(r=a \bmod b\)</span></p>
-<p>如果 <span class="math inline">\(r=0\)</span>，即 <span
-class="math inline">\(b|a\)</span>，则 <span
-class="math inline">\(\gcd(a,b)=b\)</span></p>
-<p>否则假设 <span class="math inline">\(d\)</span> 是 <span
-class="math inline">\(a,b\)</span> 的一个公约数，则 <span
-class="math inline">\(d|a,d|b\)</span></p>
-<p>而 <span class="math inline">\(r=a-kb\)</span></p>
-<p>两边同时除以d得到</p>
+        <p>式子：</p>
 <p><span
-class="math inline">\(\frac{r}{d}=\frac{a}{d}-\frac{kb}{d}\)</span></p>
-<p>因为 <span class="math inline">\(d|a,d|b\)</span>，可以得到 <span
-class="math inline">\(d|r\)</span></p>
-<p>所以 <span class="math inline">\(d\)</span> 是 <span
-class="math inline">\(r\)</span> 的一个约数，因此 <span
-class="math inline">\(d\)</span> 是 <span
-class="math inline">\(a,b,r\)</span> 的公约数数</p>
-<p>设 <span class="math inline">\(A\)</span> 是 <span
-class="math inline">\((a,b)\)</span> 的公约数集，<span
-class="math inline">\(B\)</span> 是 <span
-class="math inline">\((b,r)\)</span> 的公约数集，<span
-class="math inline">\(R\)</span> 是 <span
-class="math inline">\((a,r)\)</span> 的公约数集</p>
-<p>那么 <span class="math inline">\(A\in B,A\in R\)</span></p>
-<p>假设 <span class="math inline">\(d&#39;\)</span> 是 <span
-class="math inline">\((b,r)\)</span> 的公约数，则 <span
-class="math inline">\(d&#39;|b,d&#39;|r\)</span>；</p>
-<p>又 <span class="math inline">\(a=kb+r\)</span>，等式两边都除以 <span
-class="math inline">\(d&#39;\)</span>,可得</p>
-<p><span
-class="math inline">\(\frac{a}{d&#39;}=\frac{kb+r}{d&#39;}=\frac{kb}{d&#39;}+\frac{r}{d&#39;}\)</span></p>
-<p>因为 <span class="math inline">\(d&#39;|b,d&#39;|r\)</span>，则有
-<span class="math inline">\(d&#39;|a\)</span></p>
-<p>所以 <span class="math inline">\(d&#39;\)</span> 也是 <span
-class="math inline">\(a,b\)</span> 的公约数</p>
-<p>因此 <span class="math inline">\((b,r)\)</span> 的约数集是 <span
-class="math inline">\((a,b)\)</span> 的约数集的一部分，也是 <span
-class="math inline">\((a,r)\)</span> 约数集的一部分</p>
-<p>所以 <span class="math inline">\(B\subseteq A,B\subseteq
-R\)</span></p>
-<p>综上，<span class="math inline">\(A=B\)</span></p>
-<p>由此得证，<span class="math inline">\((a,b)\)</span> 的公约数与 <span
-class="math inline">\((b,r)\)</span>
-的公约数相同，当然它们的最大公约数也必定相同。</p>
-<p>即 <span class="math inline">\(\gcd(a,b)=\gcd(b,r)=\gcd(b,a \bmod
-b)\)</span></p>
+class="math display">\[[k|n]=\frac{1}{k}\sum_{i=0}^{k-1}\omega_k^{in}\]</span></p>
+<p>同样：</p>
+<p><span class="math display">\[\begin{aligned}&amp;[a\equiv b \pmod k]
+\\ =&amp; [k|a-b]=\frac{1}{k}\sum_{i=0}^{k-1}\omega_k^{i(a-b)} \\
+=&amp;\frac{1}{k}\sum_{i=0}^{k-1}\omega_k^{ia}\omega_k^{-ib}\end{aligned}\]</span></p>
+<h4 id="loj6485.-ljj-学二项式定理">LOJ#6485. LJJ 学二项式定理</h4>
+<p><span class="math display">\[\begin{aligned}&amp;\left[ \sum_{i=0}^n
+\left( {n\choose i} \cdot s^{i} \cdot a_{i\bmod 4} \right)     \right]
+\\ =&amp;\sum_{i=0}^3 a_i \sum_{j=0}^n [4|j-i] C_n^j s^j \\ =&amp;
+\sum\limits_{i=0}^3 a_i \sum_{j=0}^n C_n^j s^j
+\frac{1}{4}\sum\limits_{k=0}^3\omega_4^{kj}\omega_4^{-ki} \\ =&amp;
+\frac{1}{4}\sum\limits_{i=0}^3 a_i \sum\limits_{k=0}^3 \omega_4^{-ki}
+\sum_{j=0}^n C_n^j s^j (\omega_4^k)^j \\ =&amp;
+\frac{1}{4}\sum\limits_{i=0}^3 a_i
+\sum\limits_{k=0}^3\omega_4^{-ki}(s\omega_4^k+1)^n\end{aligned}\]</span></p>
 <hr />
-<p>代码： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b==<span class="number">0</span>?a:<span class="built_in">gcd</span>(b,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="p5591-小猪佩奇学数学">P5591 小猪佩奇学数学</h4>
+<p><span
+class="math display">\[\begin{aligned}&amp;\sum\limits_{i=0}^{n}C_{n}^{i}p^i\lfloor\frac{i}{k}\rfloor
+\\ =&amp; \sum\limits_{i=0}^{n}C_{n}^{i}p^i\frac{i-i\bmod k}{k} \\
+=&amp;
+\frac{1}{k}\sum\limits_{i=0}^{n}C_{n}^{i}p^ii-\frac{1}{k}\sum\limits_{i=0}^nC_{n}^{i}p^i(i\bmod
+k) \\
+=&amp;\frac{np}{k}\sum\limits_{i=0}^{n-1}C_{n-1}^{i-1}p^{i-1}-\frac{1}{k}\sum\limits_{i=0}^nC_{n}^{i}p^i(i\bmod
+k) \\
+=&amp;\frac{np}{k}(p+1)^{n-1}-\frac{1}{k}\sum\limits_{i=0}^nC_n^ip^i\sum\limits_{j=0}^{k-1}j[k|i-j]
+\\
+=&amp;\frac{np}{k}(p+1)^{n-1}-\frac{1}{k}\sum\limits_{i=0}^nC_n^ip^i\sum\limits_{j=0}^{k-1}\frac{j}{k}\sum\limits_{t=0}^{k-1}\omega_k^{ti}\omega_k^{-tj}
+\\
+=&amp;\frac{np}{k}(p+1)^{n-1}-\frac{1}{k^2}\sum\limits_{j=0}^{k-1}j\sum\limits_{t=0}^{k-1}\omega_k^{-tj}\sum\limits_{i=0}^nC_n^ip^i(\omega_k^{t})^i
+\\
+=&amp;\frac{np}{k}(p+1)^{n-1}-\frac{1}{k^2}\sum\limits_{j=0}^{k-1}j\sum\limits_{t=0}^{k-1}\omega_k^{-tj}(p\omega_k^t+1)^n
+\\
+=&amp;\frac{np}{k}(p+1)^{n-1}-\frac{1}{k^2}\sum\limits_{t=0}^{k-1}(p\omega_k^t+1)^n\sum\limits_{j=0}^{k-1}j\omega_k^{-tj}\end{aligned}\]</span></p>
+<p>令 <span
+class="math inline">\(f(n,w)=\sum\limits_{j=0}^{n-1}jw^j\)</span>，则有</p>
+<p><span class="math display">\[\begin{aligned}&amp;wf(n,w)-f(n,w) \\
+=&amp;\sum\limits_{j=0}^{n-1}jw^{j+1}-\sum\limits_{j=0}^{n-1}jw^j \\
+=&amp;\sum\limits_{j=1}^{n}(j-1)w^j-\sum\limits_{j=0}^{n-1}jw^j \\
+=&amp;(n-1)w^n-\sum\limits_{i=1}^{n-1}w^i\end{aligned}\]</span></p>
+<p>当 <span class="math inline">\(w=1\)</span> 时，<span
+class="math inline">\(f(n,w)=\frac{n(n-1)}{2}\)</span>。</p>
+<p>当 <span class="math inline">\(w\ne 1\)</span> 时，<span
+class="math inline">\(wf(n,w)-f(n,w)=-\frac{w(1-w^{n-1})}{1-w}+(n-1)w^n\)</span>，则
+<span
+class="math inline">\(f(n,w)=\frac{-\frac{w(1-w^{n-1})}{1-w}+(n-1)w^n}{w-1}\)</span>。</p>
+<p>原式等于</p>
+<p><span
+class="math display">\[\begin{aligned}=&amp;\frac{np}{k}(p+1)^{n-1}-\frac{1}{k}\sum\limits_{t=0}^{k-1}(p\omega_k^t+1)^nf(k,\omega_k^{-t})\end{aligned}\]</span></p>
+<p>计算即可。</p>
+<hr />
+<h4 id="uoj450.-集训队作业2018复读机">UOJ#450.
+【集训队作业2018】复读机</h4>
+<p>对于 <span class="math inline">\(d=1\)</span>，答案为 <span
+class="math inline">\(k^n\)</span>。</p>
+<p>对于 <span class="math inline">\(d=2\)</span>：</p>
+<p>考虑一种颜色的 EGF 为 <span
+class="math inline">\(F(x)=\sum\limits_{i=0}^{\infty}[d|i]\frac{x^i}{i!}\)</span>，答案即为
+<span class="math inline">\(n![x^n]F(x)^k\)</span>。</p>
+<p>我们需要得出 <span class="math inline">\(F(x)^k\)</span>
+的展开形式，直接多项式快速幂的时间复杂度跟 <span
+class="math inline">\(n\)</span> 有关，无法接受，考虑将 <span
+class="math inline">\(F(x)\)</span> 单位根反演一波：</p>
+<p><span
+class="math display">\[\begin{aligned}&amp;F(x)=\sum\limits_{i=0}^{\infty}\frac{1}{d}\sum\limits_{j=0}^{d-1}\omega_d^{ij}\frac{x^i}{i!}
+\\
+=&amp;\frac{1}{d}\sum\limits_{j=0}^{d-1}\sum\limits_{i=0}^{\infty}\frac{(\omega_d^jx)^i}{i!}
+\\ =&amp;\frac{1}{d}\sum\limits_{j=0}^{d-1}
+\exp(\omega_d^jx)\end{aligned}\]</span></p>
+<p>我们要求的就是</p>
+<p><span
+class="math display">\[n![x^n]\left(\frac{1}{d}\sum\limits_{j=0}^{d-1}\exp(\omega_d^jx)\right)^k\]</span></p>
+<p>对于 <span class="math inline">\(d=2\)</span>，答案即为：</p>
+<p><span
+class="math display">\[\begin{aligned}&amp;n![x^n]\left(\frac{e^x+e^{-x}}{2}\right)^k
+\\ =&amp;n![x^n]\frac{1}{2^k}\sum\limits_{i=0}^kC_k^ie^{ix}e^{-x(k-i)}
+\\ =&amp;n![x^n]\frac{1}{2^k}\sum\limits_{i=0}^kC_k^ie^{x(2i-k)} \\
+=&amp;n![x^n]\frac{1}{2^k}\sum\limits_{i=0}^kC_k^i\sum\limits_{j=0}^{\infty}\frac{(2i-k)^jx^j}{j!}
+\\
+=&amp;\frac{1}{2^k}\sum\limits_{i=0}^kC_k^i(2i-k)^n\end{aligned}\]</span></p>
+<p>对于 <span class="math inline">\(d=3\)</span>，答案即为</p>
+<p><span
+class="math display">\[\begin{aligned}&amp;n![x^n]\left(\frac{e^x+e^{\omega_3x}+e^{\omega_3^2x}}{3}\right)^k
+\\
+=&amp;n![x^n]\frac{1}{3^k}\sum\limits_{i=0}^kC_k^i\sum\limits_{j=0}^{k-i}C_{k-i}^je^{ix}e^{j\omega_3x}e^{(k-i-j)\omega_3^2x}
+\\
+=&amp;n![x^n]\frac{1}{3^k}\sum\limits_{i=0}^kC_k^i\sum\limits_{j=0}^{k-i}C_{k-i}^je^{(i+j\omega_3+(k-i-j)\omega_3^2)x}
+\\
+=&amp;\frac{1}{3^k}\sum\limits_{i=0}^kC_k^i\sum\limits_{j=0}^{k-i}C_{k-i}^j(i+j\omega_3+(k-i-j)\omega_3^2)^n\end{aligned}\]</span></p>
+<hr />
+<h4 id="loj3058.-hnoi2019白兔之舞">LOJ#3058. 「HNOI2019」白兔之舞</h4>
+<p>令 <span class="math inline">\(f_{i,j,k}\)</span> 表示从 <span
+class="math inline">\((0,x)\)</span> 开始走到第 <span
+class="math inline">\(i\)</span> 行，走了 <span
+class="math inline">\(j\)</span> 步的方案数。显然有 <span
+class="math inline">\(f_{0,0,x}=1\)</span>。转移则为：</p>
+<p><span
+class="math display">\[f_{i,j,k}=\sum\limits_{l=1}^nw_{l,k}\sum\limits_{d=0}^{i-1}f_{d,j-1,l}\]</span></p>
+<p>发现 <span class="math inline">\(n\)</span> 比较小，可以将 <span
+class="math inline">\(w\)</span> 压成一个矩阵 <span
+class="math inline">\(W\)</span>，其中 <span
+class="math inline">\(W(i,j)=w_{i,j}\)</span>，再用组合意义推一推。</p>
+<p>令 <span class="math inline">\(B\)</span> 表示一个 <span
+class="math inline">\(1\times n\)</span> 的向量，只有 <span
+class="math inline">\(B(1,x)=1\)</span>，其他都为 <span
+class="math inline">\(0\)</span>。则有：</p>
+<p><span class="math display">\[f_{i,j,k}=(B\cdot
+W^j)(1,k)C_{i-1}^{j-1}\]</span></p>
+<p><span
+class="math display">\[\begin{aligned}ans_t&amp;=\sum\limits_{i=0}^L\sum\limits_{j=0}^L[j\bmod
+k=t]f_{i,j,y} \\ &amp;=\sum\limits_{i=0}^L\sum\limits_{j=0}^L[j\bmod
+k=t](B\cdot W^j)(1,y)C_{i-1}^{j-1} \\ &amp;=\sum\limits_{j=0}^L[j\bmod
+k=t](B\cdot W^j)(1,y)\sum\limits_{i=0}^LC_{i-1}^{j-1} \\
+&amp;=\sum\limits_{j=0}^L[k|(j-t)](B\cdot W^j)(1,y)C_L^j \\
+&amp;=\sum\limits_{j=0}^L(B\cdot W^j)(1,y)C_L^j
+\frac{1}{k}\sum\limits_{d=0}^{k-1}\omega_k^{d(j-t)} \\
+&amp;=\frac{1}{k}\sum\limits_{d=0}^{k-1}\omega_k^{-dt}\sum\limits_{j=0}^LC_L^j(B\cdot
+W^j)(1,y) \omega_k^{dj} \\
+&amp;=\frac{1}{k}\sum\limits_{d=0}^{k-1}\omega_k^{-dt}\sum\limits_{j=0}^LC_L^j(B\cdot
+(W\omega_k^{d})^j(1,y)) \\
+&amp;=\frac{1}{k}\sum\limits_{d=0}^{k-1}\omega_k^{-dt}(B\cdot
+(W\omega_k^{d}+I)^L(1,y))\end{aligned}\]</span></p>
+<p>令 <span class="math inline">\(a_d=(B\cdot
+(W\omega_k^{d}+I)^L(1,y))\)</span>，这可以预处理出来，则</p>
+<p><span
+class="math display">\[ans_t=\frac{1}{k}\sum\limits_{d=0}^{k-1}a_d\omega_k^{-dt}\]</span></p>
+<p>这就是 IDFT，任意长度的 IDFT 可以使用 Bluestein 算法。</p>
+<hr />
 
     </div>
 
@@ -261,13 +334,10 @@ b)\)</span></p>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/bsgs/" rel="prev" title="大步小步算法">
-      <i class="fa fa-chevron-left"></i> 大步小步算法
+    <a href="/mobius/" rel="prev" title="莫比乌斯反演入门">
+      <i class="fa fa-chevron-left"></i> 莫比乌斯反演入门
     </a></div>
-      <div class="post-nav-item">
-    <a href="/quad-residue/" rel="next" title="二次剩余">
-      二次剩余 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -326,6 +396,8 @@ b)\)</span></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#loj6485.-ljj-%E5%AD%A6%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">LOJ#6485. LJJ 学二项式定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p5591-%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%AD%A6%E6%95%B0%E5%AD%A6"><span class="nav-number">2.</span> <span class="nav-text">P5591 小猪佩奇学数学</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uoj450.-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BD%9C%E4%B8%9A2018%E5%A4%8D%E8%AF%BB%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">UOJ#450.
+【集训队作业2018】复读机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#loj3058.-hnoi2019%E7%99%BD%E5%85%94%E4%B9%8B%E8%88%9E"><span class="nav-number">4.</span> <span class="nav-text">LOJ#3058. 「HNOI2019」白兔之舞</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

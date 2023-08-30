@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="对于一些函数 f(n)，如果很难直接求出它的值，而容易求出其倍数和或约数和 g(n)，那么可以通过莫比乌斯反演简化运算，求得 f(n) 的值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫比乌斯反演入门">
+<meta property="og:url" content="http://example.com/mobius/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="对于一些函数 f(n)，如果很难直接求出它的值，而容易求出其倍数和或约数和 g(n)，那么可以通过莫比乌斯反演简化运算，求得 f(n) 的值。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-30T09:53:53.382Z">
+<meta property="article:modified_time" content="2023-08-30T09:54:26.716Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/mobius/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>莫比乌斯反演入门 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/mobius/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          莫比乌斯反演入门
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-08-30 17:53:53 / Modified: 17:54:26" itemprop="dateCreated datePublished" datetime="2023-08-30T17:53:53+08:00">2023-08-30</time>
+            </span>
+
+          
+            <div class="post-description">对于一些函数 f(n)，如果很难直接求出它的值，而容易求出其倍数和或约数和 g(n)，那么可以通过莫比乌斯反演简化运算，求得 f(n) 的值。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="p2522-haoi2011problem-b">P2522 [HAOI2011]Problem b</h4>
+<p><span
+class="math display">\[\sum\limits_{i=a}^b\sum\limits_{j=c}^d[\gcd(i,j)=k]\]</span></p>
+<p>根据容斥原理，可以将问题转化为求</p>
+<p><span
+class="math display">\[\begin{aligned}&amp;\sum\limits_{i=1}^n\sum\limits_{j=1}^m[\gcd(i,j)=k]
+\\
+=&amp;\sum\limits_{i=1}^{\lfloor\frac{n}{k}\rfloor}\sum\limits_{i=1}^{\lfloor\frac{m}{k}\rfloor}[\gcd(i,j)=1]
+\\
+=&amp;\sum\limits_{i=1}^{\lfloor\frac{n}{k}\rfloor}\sum\limits_{j=1}^{\lfloor\frac{m}{k}\rfloor}
+\sum\limits_{d|\gcd(i,j)}\mu(d) \\
+=&amp;\sum\limits_{d}\mu(d)\sum\limits_{i=1}^{\lfloor\frac{n}{k}\rfloor}[d|i]\sum\limits_{j=1}^{\lfloor\frac{m}{k}\rfloor}[d|j]
+\\
+=&amp;\sum\limits_{d}\mu(d)\sum\limits_{i=1}^{\lfloor\frac{n}{kd}\rfloor}\sum\limits_{j=1}^{\lfloor\frac{m}{kd}\rfloor}1
+\\
+=&amp;\sum\limits_{d}\mu(d)\lfloor\frac{n}{kd}\rfloor\lfloor\frac{m}{kd}\rfloor\end{aligned}\]</span></p>
+<p>整除分块即可。</p>
+<hr />
+<h4 id="sp5971-lcmsum---lcm-sum">SP5971 LCMSUM - LCM Sum</h4>
+<p><span
+class="math display">\[\begin{aligned}&amp;\sum\limits_{i=1}^n\operatorname{lcm}(i,n)
+\\ =&amp;\sum\limits_{i=1}^n\frac{i\cdot n}{\gcd(i,n)} \\
+=&amp;n\sum\limits_{d|n}\sum\limits_{i=1}^n\frac{i}{d}[\gcd(i,n)=d] \\
+=&amp;n\sum\limits_{d|n}\sum\limits_{i=1}^{\frac{n}{d}}
+i[\gcd\left(i,\frac{n}{d}\right)=1]\end{aligned}\]</span></p>
+<p>令 <span class="math inline">\(f(n)=\sum\limits_{i=1}^n
+i[\gcd(i,n)=1]\)</span>，相当于是求和 <span
+class="math inline">\(n\)</span> 互质的数的和，可以发现如果一个数 <span
+class="math inline">\(x\)</span> 满足条件则另一个数 <span
+class="math inline">\(n-x\)</span> 必然也满足条件，两两配对可以得出
+<span
+class="math inline">\(f(n)=\frac{\varphi(n)n}{2}\)</span>（注意特判
+<span class="math inline">\(f(1)=1\)</span>）。</p>
+<p>原式等于</p>
+<p><span
+class="math display">\[n\sum\limits_{d|n}f\left(\frac{n}{d}\right)=n\sum\limits_{d|n}f(d)\]</span></p>
+<p>预处理一下就好了。</p>
+<hr />
+<h4 id="p1829-国家集训队crash的数字表格-jzptab">P1829
+[国家集训队]Crash的数字表格 / JZPTAB</h4>
+<p><span
+class="math display">\[\begin{aligned}&amp;\sum\limits_{i=1}^n\sum\limits_{j=1}^m\operatorname{lcm}(i,j)
+\\ =&amp;\sum\limits_{i=1}^n\sum\limits_{j=1}^m \frac{ij}{\gcd(i,j)} \\
+=&amp;\sum\limits_{d}\frac{1}{d}\sum\limits_{i=1}^n[d|i]i\sum\limits_{j=1}^m[d|j]j
+[\gcd(i,j)=d] \\
+=&amp;\sum\limits_{d}\frac{1}{d}\sum\limits_{i=1}^{\lfloor
+\frac{n}{d}\rfloor}id \sum\limits_{j=1}^{\lfloor \frac{m}{d}\rfloor}
+jd[\gcd(i,j)=1] \\ =&amp; \sum\limits_{d}d \sum\limits_{i=1}^{\lfloor
+\frac{n}{d}\rfloor}i \sum\limits_{j=1}^{\lfloor \frac{m}{d}\rfloor}
+j[\gcd(i,j)=1]\end{aligned}\]</span></p>
+<p>令 <span class="math inline">\(f(n,m)=\sum\limits_{i=1}^ni
+\sum\limits_{j=1}^m j[\gcd(i,j)=1]\)</span>，则原式等于 <span
+class="math inline">\(\sum\limits_d d \cdot
+f(\lfloor\frac{n}{d}\rfloor,\lfloor\frac{m}{d}\rfloor)\)</span></p>
+<p><span class="math display">\[\begin{aligned}f(n,m) &amp;=
+\sum\limits_{i=1}^n i\sum\limits_{j=1}^m j \sum\limits_{d|\gcd(i,j)}
+\mu(d) \\ &amp;= \sum\limits_{d}\mu(d)\sum\limits_{i=1}^n
+[d|i]i\sum\limits_{j=1}^m [d|j] j \\
+&amp;=\sum\limits_{d}\mu(d)\sum\limits_{i=1}^{\lfloor
+\frac{n}{d}\rfloor}id\sum\limits_{j=1}^{\lfloor \frac{m}{d}\rfloor}jd \\
+&amp;=\sum\limits_{d}\mu(d)d^2\sum\limits_{i=1}^{\lfloor
+\frac{n}{d}\rfloor}i\sum\limits_{j=1}^{\lfloor \frac{m}{d}\rfloor}j \\
+&amp;=\sum\limits_{d}\mu(d)d^2 \frac{\lfloor \frac{n}{d}\rfloor(\lfloor
+\frac{n}{d}\rfloor+1)\lfloor \frac{m}{d}\rfloor(\lfloor
+\frac{m}{d}\rfloor+1)}{4} \\ \end{aligned}\]</span></p>
+<p>可以数论分块求解。</p>
+<p>原式等于</p>
+<p><span class="math display">\[\sum\limits_{d}d\cdot
+f(\lfloor\frac{n}{d}\rfloor,\lfloor\frac{m}{d}\rfloor)\]</span></p>
+<p>同样数论分块即可。</p>
+<hr />
+<h4 id="loj2185.-sdoi2015约数个数和">LOJ#2185.
+「SDOI2015」约数个数和</h4>
+<p><span class="math display">\[\sum\limits_{i=1}^n\sum\limits_{j=1}^m
+\operatorname{d}(ij)\]</span></p>
+<p><span
+class="math display">\[\begin{aligned}\operatorname{d}(ij)&amp;=\sum\limits_{x|i}\sum\limits_{y|j}[\gcd(x,y)=1]
+\\
+&amp;=\sum\limits_{x|i}\sum\limits_{y|j}\sum\limits_{d|\gcd(x,y)}\mu(d)
+\\
+&amp;=\sum\limits_{d}\mu(d)\sum\limits_{x|i}[d|x]\sum\limits_{y|j}[d|y]
+\\
+&amp;=\sum\limits_{d}\mu(d)\sum\limits_{x|\frac{i}{d}}\sum\limits_{y|\frac{j}{d}}1
+\\ &amp;=\sum\limits_{d}\mu(d)
+\operatorname{d}\left(\frac{i}{d}\right)\operatorname{d}\left(\frac{j}{d}\right)\end{aligned}\]</span></p>
+<p>原式等于</p>
+<p><span class="math display">\[\begin{aligned}
+&amp;\sum\limits_{i=1}^n\sum\limits_{j=1}^m \sum\limits_{d}\mu(d)
+\operatorname{d}\left(\frac{i}{d}\right)\operatorname{d}\left(\frac{j}{d}\right)
+\\ =&amp;
+\sum\limits_{d}\mu(d)\sum\limits_{i=1}^n[d|i]\operatorname{d}\left(\frac{i}{d}\right)\sum\limits_{j=1}^m[d|j]\operatorname{d}\left(\frac{j}{d}\right)
+\\ =&amp;
+\sum\limits_{d}\mu(d)\sum\limits_{i=1}^{\lfloor\frac{n}{d}\rfloor}\operatorname{d}(i)\sum\limits_{j=1}^{\lfloor
+\frac{m}{d}\rfloor}\operatorname{d}(j) \end{aligned}\]</span></p>
+<p>数论分块即可。</p>
+<hr />
+<h4 id="p3768-简单的数学题">P3768 简单的数学题</h4>
+<p><span
+class="math display">\[\begin{aligned}&amp;\sum\limits_{i=1}^n\sum\limits_{j=1}^nij\gcd(i,j)
+\\ =&amp;
+\sum\limits_{d}d\sum\limits_{i=1}^n\sum\limits_{j=1}^nij[\gcd(i,j)=d]
+\\  =&amp;\sum\limits_{d}d^3\sum\limits_{i=1}^{\lfloor\frac{n}{d}\rfloor}\sum\limits_{j=1}^{\lfloor\frac{n}{d}\rfloor}ij[\gcd(i,j)=1]
+\\
+=&amp;\sum\limits_{d}d^3\sum\limits_{i=1}^{\lfloor\frac{n}{d}\rfloor}\sum\limits_{j=1}^{\lfloor\frac{n}{d}\rfloor}ij\sum\limits_{t|\gcd(i,j)}\mu(t)
+\\
+=&amp;\sum\limits_{d}d^3\sum\limits_{t}\mu(t)\sum\limits_{i=1}^{\lfloor\frac{n}{d}\rfloor}[t|i]\sum\limits_{j=1}^{\lfloor\frac{n}{d}\rfloor}[t|j]ij
+\\
+=&amp;\sum\limits_{d}d^3\sum\limits_{t}\mu(t)t^2\sum\limits_{i=1}^{\lfloor\frac{n}{td}\rfloor}\sum\limits_{j=1}^{\lfloor\frac{n}{td}\rfloor}ij
+\\
+=&amp;\sum\limits_{d}d^3\sum\limits_{t}\mu(t)t^2\left(\frac{\lfloor\frac{n}{td}\rfloor(\lfloor\frac{n}{td}\rfloor+1)}{2}\right)^2
+\\
+=&amp;\sum\limits_{T}\left(\frac{\lfloor\frac{n}{T}\rfloor(\lfloor\frac{n}{T}\rfloor+1)}{2}\right)^2\sum\limits_{d|T}d^3\mu\left(\frac{T}{d}\right)\left(\frac{T}{d}\right)^2
+\\
+=&amp;\sum\limits_{T}\left(\frac{\lfloor\frac{n}{T}\rfloor(\lfloor\frac{n}{T}\rfloor+1)}{2}\right)^2T^2\sum\limits_{d|T}d\mu\left(\frac{T}{d}\right)
+\\
+=&amp;\sum\limits_{T}\left(\frac{\lfloor\frac{n}{T}\rfloor(\lfloor\frac{n}{T}\rfloor+1)}{2}\right)^2T^2\varphi(T)\end{aligned}\]</span></p>
+<p>前面数论分块，后面杜教筛，令 <span
+class="math inline">\(f(n)=n^2\varphi(n)=(\operatorname{id}^2\varphi)(n)\)</span>，求
+<span class="math inline">\(S(n)=\sum\limits_{i=1}^n
+f(i)=\sum\limits_{i=1}^n(\operatorname{id}^2\varphi)(n)\)</span></p>
+<p>构造积性函数 <span
+class="math inline">\(g=\operatorname{id}^2\)</span>，则 <span
+class="math inline">\((fg)(n)=\sum\limits_{d|n}d^2\varphi(d)\cdot
+\left(\frac{n}{d}\right)^2=n^2\sum\limits_{d|n}\varphi(d)=n^3\)</span></p>
+<p><span
+class="math display">\[\begin{aligned}S(n)=&amp;\sum\limits_{i=1}^n
+fg(i)-\sum\limits_{d=2}^n g(d)S\left(\lfloor\frac{n}{d}\rfloor\right) \\
+=&amp;\sum\limits_{i=1}^n i^3-\sum\limits_{d=2}^n d^2
+S\left(\lfloor\frac{n}{d}\rfloor\right) \\
+=&amp;\left(\frac{n(n+1)}{2}\right)^2-\sum\limits_{d=2}^n
+d^2S\left(\lfloor\frac{n}{d}\rfloor\right)\end{aligned}\]</span></p>
+<p>整除分块求解即可。</p>
+<hr />
+<h4 id="p3172-cqoi2015选数">P3172 [CQOI2015]选数</h4>
+<p>可以先令 <span
+class="math inline">\(l=\lceil\frac{L}{k}\rceil,r=\lfloor\frac{H}{k}\rfloor\)</span>，问题变成了在区间
+<span class="math inline">\([l,r]\)</span> 中选取 <span
+class="math inline">\(n\)</span> 个整数，使得这些整数的 <span
+class="math inline">\(\gcd\)</span> 为 <span
+class="math inline">\(1\)</span>，方便处理。</p>
+<p>令 <span class="math inline">\(f_i\)</span> 表示 <span
+class="math inline">\(\gcd\)</span> 为 <span
+class="math inline">\(i\)</span> 的倍数的方案数，显然有 <span
+class="math inline">\(f_i=\left(\lfloor\frac{r}{i}\rfloor-\lfloor\frac{l-1}{i}\rfloor\right)^n\)</span>。
+<span class="math inline">\(g_i\)</span> 表示 <span
+class="math inline">\(\gcd\)</span> 为 <span
+class="math inline">\(i\)</span> 的方案数，则有</p>
+<p><span class="math display">\[f_i=\sum\limits_{i|d}g_d\]</span></p>
+<p>莫比乌斯反演一波，可得：</p>
+<p><span
+class="math display">\[g_i=\sum\limits_{i|d}\mu{\left(\frac{d}{i}\right)}
+f_d=\sum\limits_{i|d}\mu{\left(\frac{d}{i}\right)}
+\left(\lfloor\frac{r}{d}\rfloor-\lfloor\frac{l-1}{d}\rfloor\right)^n\]</span></p>
+<p>整除分块，前缀和杜教筛即可。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/gf/" rel="prev" title="生成函数入门">
+      <i class="fa fa-chevron-left"></i> 生成函数入门
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/omega/" rel="next" title="单位根反演">
+      单位根反演 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#p2522-haoi2011problem-b"><span class="nav-number">1.</span> <span class="nav-text">P2522 [HAOI2011]Problem b</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sp5971-lcmsum---lcm-sum"><span class="nav-number">2.</span> <span class="nav-text">SP5971 LCMSUM - LCM Sum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p1829-%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9Fcrash%E7%9A%84%E6%95%B0%E5%AD%97%E8%A1%A8%E6%A0%BC-jzptab"><span class="nav-number">3.</span> <span class="nav-text">P1829
+[国家集训队]Crash的数字表格 &#x2F; JZPTAB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#loj2185.-sdoi2015%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%92%8C"><span class="nav-number">4.</span> <span class="nav-text">LOJ#2185.
+「SDOI2015」约数个数和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p3768-%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E5%AD%A6%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">P3768 简单的数学题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p3172-cqoi2015%E9%80%89%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">P3172 [CQOI2015]选数</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

@@ -1,3 +1,7 @@
+http://example.com/polynomial/
+http://example.com/omega/
+http://example.com/mobius/
+http://example.com/gf/
 http://example.com/exgcd/
 http://example.com/crt/
 http://example.com/rational-number-remainder/
@@ -7,5 +11,4 @@ http://example.com/gcd/
 http://example.com/long-chain-subdivision/
 http://example.com/primitive-root/
 http://example.com/quad-residue/
-http://example.com/hello-world/
 http://example.com/
