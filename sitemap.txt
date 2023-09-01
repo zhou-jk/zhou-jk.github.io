@@ -1,3 +1,4 @@
+http://example.com/prime/
 http://example.com/polynomial/
 http://example.com/omega/
 http://example.com/mobius/

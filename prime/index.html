@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="欧几里得算法用于两个正整数 $a,b$ 的最大公约数">
+  <meta name="description" content="Miller–Rabin 素性测试（Miller–Rabin primality test）是进阶的素数判定方法。它是由 Miller 和 Rabin 二人根据费马小定理的逆定理（费马测试）优化得到的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欧几里得算法">
-<meta property="og:url" content="http://example.com/gcd/index.html">
+<meta property="og:title" content="Miller–Rabin 素性测试">
+<meta property="og:url" content="http://example.com/prime/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="欧几里得算法用于两个正整数 $a,b$ 的最大公约数">
+<meta property="og:description" content="Miller–Rabin 素性测试（Miller–Rabin primality test）是进阶的素数判定方法。它是由 Miller 和 Rabin 二人根据费马小定理的逆定理（费马测试）优化得到的。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-16T10:48:40.908Z">
-<meta property="article:modified_time" content="2023-07-16T11:20:30.251Z">
+<meta property="article:published_time" content="2023-09-01T08:25:38.061Z">
+<meta property="article:modified_time" content="2023-09-01T09:08:31.933Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/gcd/">
+<link rel="canonical" href="http://example.com/prime/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>欧几里得算法 | Hexo</title>
+  <title>Miller–Rabin 素性测试 | Hexo</title>
   
 
 
@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/gcd/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/prime/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          欧几里得算法
+          Miller–Rabin 素性测试
         </h1>
 
         <div class="post-meta">
@@ -174,11 +174,11 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-16 18:48:40 / Modified: 19:20:30" itemprop="dateCreated datePublished" datetime="2023-07-16T18:48:40+08:00">2023-07-16</time>
+              <time title="Created: 2023-09-01 16:25:38 / Modified: 17:08:31" itemprop="dateCreated datePublished" datetime="2023-09-01T16:25:38+08:00">2023-09-01</time>
             </span>
 
           
-            <div class="post-description">欧几里得算法用于两个正整数 $a,b$ 的最大公约数</div>
+            <div class="post-description">Miller–Rabin 素性测试（Miller–Rabin primality test）是进阶的素数判定方法。它是由 Miller 和 Rabin 二人根据费马小定理的逆定理（费马测试）优化得到的。</div>
 
         </div>
       </header>
@@ -189,63 +189,85 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong>定理：</strong></p>
-<p>设 <span class="math inline">\(a=kb+r\)</span>（<span
-class="math inline">\(a,b,k,r\)</span> 都是正整数），则 <span
-class="math inline">\(\gcd(a,b)=\gcd(b,r)\)</span>，即 <span
-class="math inline">\(\gcd(a,b)=\gcd(b,a\bmod b)\)</span>。</p>
-<p><strong>证明：</strong></p>
-<p>不妨令 <span class="math inline">\(a=kb+r\)</span>（<span
-class="math inline">\(a,b,k,r\)</span> 为自然数，<span
-class="math inline">\(a&gt;b\)</span>）</p>
-<p>则 <span class="math inline">\(r=a \bmod b\)</span></p>
-<p>如果 <span class="math inline">\(r=0\)</span>，即 <span
-class="math inline">\(b|a\)</span>，则 <span
-class="math inline">\(\gcd(a,b)=b\)</span></p>
-<p>否则假设 <span class="math inline">\(d\)</span> 是 <span
-class="math inline">\(a,b\)</span> 的一个公约数，则 <span
-class="math inline">\(d|a,d|b\)</span></p>
-<p>而 <span class="math inline">\(r=a-kb\)</span></p>
-<p>两边同时除以d得到</p>
-<p><span
-class="math inline">\(\frac{r}{d}=\frac{a}{d}-\frac{kb}{d}\)</span></p>
-<p>因为 <span class="math inline">\(d|a,d|b\)</span>，可以得到 <span
-class="math inline">\(d|r\)</span></p>
-<p>所以 <span class="math inline">\(d\)</span> 是 <span
-class="math inline">\(r\)</span> 的一个约数，因此 <span
-class="math inline">\(d\)</span> 是 <span
-class="math inline">\(a,b,r\)</span> 的公约数数</p>
-<p>设 <span class="math inline">\(A\)</span> 是 <span
-class="math inline">\((a,b)\)</span> 的公约数集，<span
-class="math inline">\(B\)</span> 是 <span
-class="math inline">\((b,r)\)</span> 的公约数集，<span
-class="math inline">\(R\)</span> 是 <span
-class="math inline">\((a,r)\)</span> 的公约数集</p>
-<p>那么 <span class="math inline">\(A\in B,A\in R\)</span></p>
-<p>假设 <span class="math inline">\(d&#39;\)</span> 是 <span
-class="math inline">\((b,r)\)</span> 的公约数，则 <span
-class="math inline">\(d&#39;|b,d&#39;|r\)</span>；</p>
-<p>又 <span class="math inline">\(a=kb+r\)</span>，等式两边都除以 <span
-class="math inline">\(d&#39;\)</span>,可得</p>
-<p><span
-class="math inline">\(\frac{a}{d&#39;}=\frac{kb+r}{d&#39;}=\frac{kb}{d&#39;}+\frac{r}{d&#39;}\)</span></p>
-<p>因为 <span class="math inline">\(d&#39;|b,d&#39;|r\)</span>，则有
-<span class="math inline">\(d&#39;|a\)</span></p>
-<p>所以 <span class="math inline">\(d&#39;\)</span> 也是 <span
-class="math inline">\(a,b\)</span> 的公约数</p>
-<p>因此 <span class="math inline">\((b,r)\)</span> 的约数集是 <span
-class="math inline">\((a,b)\)</span> 的约数集的一部分，也是 <span
-class="math inline">\((a,r)\)</span> 约数集的一部分</p>
-<p>所以 <span class="math inline">\(B\subseteq A,B\subseteq
-R\)</span></p>
-<p>综上，<span class="math inline">\(A=B\)</span></p>
-<p>由此得证，<span class="math inline">\((a,b)\)</span> 的公约数与 <span
-class="math inline">\((b,r)\)</span>
-的公约数相同，当然它们的最大公约数也必定相同。</p>
-<p>即 <span class="math inline">\(\gcd(a,b)=\gcd(b,r)=\gcd(b,a \bmod
-b)\)</span></p>
+        <h2 id="问题引入">问题引入：</h2>
+<p>如何判断一个数 <span class="math inline">\(n\)</span>
+是否为素数？</p>
 <hr />
-<p>代码： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b==<span class="number">0</span>?a:<span class="built_in">gcd</span>(b,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>暴力即为枚举 <span class="math inline">\(\le \sqrt{n}\)</span>
+的每个数判断是否为因数。</p>
+<p>能不能更快一点呢？</p>
+<hr />
+<h2 id="素性测试">素性测试</h2>
+<p>素性测试是一类在不对给定数字进行素数分解的情况下，测试其是否为素数的算法。</p>
+<hr />
+<h3 id="fermat-素性测试">Fermat 素性测试</h3>
+<p>根据费马小定理，我们有若 <span class="math inline">\(p\)</span>
+为素数，<span class="math inline">\(\gcd(a, p) = 1\)</span>，则 <span
+class="math inline">\(a^{p - 1} \equiv 1 \pmod{p}\)</span>。</p>
+<p>那就会有一个想法，如果反过来用，即不断地选取在 <span
+class="math inline">\([2, n-1]\)</span> 中的基 <span
+class="math inline">\(a\)</span>，并检验是否每次都有 <span
+class="math inline">\(a^{n-1} \equiv 1 \pmod n\)</span>。</p>
+<p>但是可以发现，对于某个 <span
+class="math inline">\(a,n\)</span>，<span class="math inline">\(a^{n−1}
+\equiv 1 \pmod n\)</span>，但 <span class="math inline">\(n\)</span>
+不一定为素数。我们称 <span class="math inline">\(n\)</span> 被称为以
+<span class="math inline">\(a\)</span>
+为底的<strong>伪素数</strong>。</p>
+<p>一个简单的想法是多选取几个不同的 <span
+class="math inline">\(a\)</span>，但是我们会发现，对于某些合数 <span
+class="math inline">\(n\)</span> 满足对任意满足 <span
+class="math inline">\(n\nmid a\)</span> 的整数 <span
+class="math inline">\(a\)</span> 均有 <span
+class="math inline">\(a^{n−1} \equiv 1 \pmod n\)</span>，这样的数称为
+Carmichael 数。</p>
+<hr />
+<h3 id="二次探测定理">二次探测定理</h3>
+<p>如果 <span class="math inline">\(p\)</span> 是奇素数，则 <span
+class="math inline">\(x^2 \equiv 1 \pmod p\)</span> 的解为 <span
+class="math inline">\(x \equiv 1 \pmod p\)</span> 或者 <span
+class="math inline">\(x \equiv p - 1 \pmod p\)</span>。</p>
+<hr />
+<h5 id="证明">证明</h5>
+<p><span class="math inline">\(x^2-1\equiv 0 \pmod p \Leftrightarrow
+(x+1)(x-1)\equiv 0 \pmod p\Leftrightarrow x\equiv 1\pmod p\lor x\equiv
+p-1\pmod p\)</span></p>
+<hr />
+<h3 id="millerrabin-素性测试">Miller–Rabin 素性测试</h3>
+<p>由 Fermat 素性测试得到 <span class="math inline">\(a^{p-1}\equiv
+1\pmod p\)</span>，且 <span class="math inline">\(p-1\)</span>
+为偶数（<span class="math inline">\(p\)</span> 为偶数的情况特判），则
+<span class="math inline">\(\left(a^{\frac{p-1}{2}}\right)^2\equiv 1
+\pmod p\)</span>。</p>
+<p>如果 <span class="math inline">\(a^{\frac{p-1}{2}}\bmod p\)</span>
+不为 <span class="math inline">\(1\)</span> 或 <span
+class="math inline">\(p-1\)</span>，那么说明 <span
+class="math inline">\(p\)</span> 不为素数。</p>
+<p>如果 <span class="math inline">\(a^{\frac{p-1}{2}} \equiv 1 \pmod
+p\)</span> 且 <span class="math inline">\(\frac{p-1}{2}\)</span>
+为偶数，那么可以继续判断 <span
+class="math inline">\(a^{\frac{p-1}{4}}\)</span>，一直这么做下去。</p>
+<p>更一般地说，我们令 <span class="math inline">\(p-1=u\times
+2^t\)</span>（<span class="math inline">\(u\)</span> 为奇数），对于
+<span class="math inline">\(a^u, (a^u)^2, ((a^u)^2)^2 ,
+\cdots\)</span>，这些数要么全部都是 <span
+class="math inline">\(1\)</span>，要么出现一个 <span
+class="math inline">\(p-1\)</span> 后面全是 <span
+class="math inline">\(1\)</span>，<span
+class="math inline">\(p-1\)</span> 前不能出现 <span
+class="math inline">\(1\)</span>，而且根据费马小定理最后一个必须为 <span
+class="math inline">\(1\)</span>。</p>
+<p>可以证明，对于 <span class="math inline">\([1, 2^{32})\)</span>
+范围内的数，选取 <span class="math inline">\(\{2, 7, 61\}\)</span>
+三个数作为基底进行 Miller–Rabin 素性检验就可以确定素性；对于 <span
+class="math inline">\([1, 2^{64})\)</span> 范围内的数，选取 <span
+class="math inline">\(\{2, 325, 9375, 28178, 450775, 9780504,
+1795265022\}\)</span> 七个数作为基底进行 Miller–Rabin
+素性检验就可以确定素性。也可以选取 <span class="math inline">\(\{2, 3,
+5, 7, 11, 13, 17, 19, 23, 29, 31, 37\}\)</span> 检验 <span
+class="math inline">\([1, 2^{64})\)</span> 范围内的素数。</p>
+<hr />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -261,13 +283,10 @@ b)\)</span></p>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/bsgs/" rel="prev" title="大步小步算法">
-      <i class="fa fa-chevron-left"></i> 大步小步算法
+    <a href="/omega/" rel="prev" title="单位根反演">
+      <i class="fa fa-chevron-left"></i> 单位根反演
     </a></div>
-      <div class="post-nav-item">
-    <a href="/quad-residue/" rel="next" title="二次剩余">
-      二次剩余 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -326,6 +345,7 @@ b)\)</span></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%BC%95%E5%85%A5"><span class="nav-number">1.</span> <span class="nav-text">问题引入：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A0%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">素性测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fermat-%E7%B4%A0%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="nav-number">2.1.</span> <span class="nav-text">Fermat 素性测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E6%8E%A2%E6%B5%8B%E5%AE%9A%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">二次探测定理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%81%E6%98%8E"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">证明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#millerrabin-%E7%B4%A0%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="nav-number">2.3.</span> <span class="nav-text">Miller–Rabin 素性测试</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
