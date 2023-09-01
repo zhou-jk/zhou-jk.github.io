@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/prime/</loc>
+    <loc>http://zhou-jk.github.io/miller-rabin/</loc>
     
     <lastmod>2023-09-01</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/polynomial/</loc>
+    <loc>http://zhou-jk.github.io/polynomial/</loc>
     
     <lastmod>2023-08-30</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/omega/</loc>
+    <loc>http://zhou-jk.github.io/omega/</loc>
     
     <lastmod>2023-08-30</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/mobius/</loc>
+    <loc>http://zhou-jk.github.io/mobius/</loc>
     
     <lastmod>2023-08-30</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/gf/</loc>
+    <loc>http://zhou-jk.github.io/gf/</loc>
     
     <lastmod>2023-08-30</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/exgcd/</loc>
+    <loc>http://zhou-jk.github.io/exgcd/</loc>
     
     <lastmod>2023-07-19</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/crt/</loc>
+    <loc>http://zhou-jk.github.io/crt/</loc>
     
     <lastmod>2023-07-17</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/rational-number-remainder/</loc>
+    <loc>http://zhou-jk.github.io/rational-number-remainder/</loc>
     
     <lastmod>2023-07-16</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/bsgs/</loc>
+    <loc>http://zhou-jk.github.io/bsgs/</loc>
     
     <lastmod>2023-07-16</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/bezouts/</loc>
+    <loc>http://zhou-jk.github.io/bezouts/</loc>
     
     <lastmod>2023-07-16</lastmod>
     
@@ -92,7 +92,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/gcd/</loc>
+    <loc>http://zhou-jk.github.io/gcd/</loc>
     
     <lastmod>2023-07-16</lastmod>
     
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/long-chain-subdivision/</loc>
+    <loc>http://zhou-jk.github.io/long-chain-subdivision/</loc>
     
     <lastmod>2023-07-16</lastmod>
     
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/primitive-root/</loc>
+    <loc>http://zhou-jk.github.io/primitive-root/</loc>
     
     <lastmod>2023-07-16</lastmod>
     
@@ -119,7 +119,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/quad-residue/</loc>
+    <loc>http://zhou-jk.github.io/quad-residue/</loc>
     
     <lastmod>2023-07-16</lastmod>
     
@@ -129,7 +129,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>http://zhou-jk.github.io/</loc>
     <lastmod>2023-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
