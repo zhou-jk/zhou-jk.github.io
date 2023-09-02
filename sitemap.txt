@@ -1,8 +1,8 @@
+http://zhou-jk.github.io/polynomial/
 http://zhou-jk.github.io/quad-residue/
 http://zhou-jk.github.io/mobius/
 http://zhou-jk.github.io/long-chain-subdivision/
 http://zhou-jk.github.io/miller-rabin/
-http://zhou-jk.github.io/polynomial/
 http://zhou-jk.github.io/omega/
 http://zhou-jk.github.io/gf/
 http://zhou-jk.github.io/exgcd/
