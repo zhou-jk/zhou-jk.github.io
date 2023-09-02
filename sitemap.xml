@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhou-jk.github.io/quad-residue/</loc>
+    
+    <lastmod>2023-09-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://zhou-jk.github.io/mobius/</loc>
     
     <lastmod>2023-09-02</lastmod>
@@ -111,15 +120,6 @@
   
   <url>
     <loc>http://zhou-jk.github.io/primitive-root/</loc>
-    
-    <lastmod>2023-07-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://zhou-jk.github.io/quad-residue/</loc>
     
     <lastmod>2023-07-16</lastmod>
     

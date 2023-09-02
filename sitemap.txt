@@ -1,3 +1,4 @@
+http://zhou-jk.github.io/quad-residue/
 http://zhou-jk.github.io/mobius/
 http://zhou-jk.github.io/long-chain-subdivision/
 http://zhou-jk.github.io/miller-rabin/
@@ -11,5 +12,4 @@ http://zhou-jk.github.io/bsgs/
 http://zhou-jk.github.io/bezouts/
 http://zhou-jk.github.io/gcd/
 http://zhou-jk.github.io/primitive-root/
-http://zhou-jk.github.io/quad-residue/
 http://zhou-jk.github.io/
