@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhou-jk.github.io/CF1195/</loc>
+    
+    <lastmod>2023-09-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://zhou-jk.github.io/CF1197/</loc>
+    
+    <lastmod>2023-09-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://zhou-jk.github.io/AGC021/</loc>
     
     <lastmod>2023-09-27</lastmod>
